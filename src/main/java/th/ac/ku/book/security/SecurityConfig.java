@@ -23,10 +23,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "/signup",
                         "/css/**", "/js/**").permitAll()
-                .antMatchers("/book/add")
+                .antMatchers("/book","/book/add")
                 .access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/book")
-                .access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
                 .anyRequest().authenticated()
 
                 .and()

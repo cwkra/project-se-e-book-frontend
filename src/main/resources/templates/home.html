@@ -15,13 +15,20 @@
 <div class="container">
   <h1 class="display-6">Welcome to E-Book Web Application</h1>
 
-  <div sec:authorize="isAuthenticated()">
-    <p>Hello, Khun <b><span sec:authentication="name"></span></b></p>
+  <div class="mb-3" sec:authorize="isAuthenticated()">
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+      <p>Hello, Khun Admin <b><span sec:authentication="name"></span></b></p>
+    </div>
+    <div sec:authorize="hasRole('ROLE_USER')">
+      <p>Hello, Khun <b><span sec:authentication="name"></span></b></p>
+    </div>
   </div>
-  <div sec:authorize="isAnonymous()">
+
+  <div class="mb-3" sec:authorize="isAnonymous()">
     <a class="btn btn-button" th:href="@{/login}" id="login-button">Login</a>
     <a class="btn btn-outline-button" th:href="@{/signup}" id="signup-button">Sign Up</a>
   </div>
+  <div class="mb-3">
   <table class="table table-striped">
     <thead>
     <tr>
@@ -86,7 +93,7 @@
     </tbody>
   </table>
 </div>
-
+</div>
 </body>
 </html>
 
