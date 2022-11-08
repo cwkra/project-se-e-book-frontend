@@ -20,4 +20,7 @@ public class BookDto {
 
     @NotBlank
     private String category;
+
+    @NotBlank
+    private String author;
 }

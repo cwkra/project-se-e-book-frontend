@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import th.ac.ku.book.dto.BookDto;
 import th.ac.ku.book.service.BookService;
@@ -41,5 +42,31 @@ public class BookController {
 
         service.addBook(bookDto);
         return "redirect:/book";
+    }
+
+    public String updateBook(@Valid BookDto bookDto,
+                             BindingResult result,
+                             Model model) {
+        if (result.hasErrors()) {
+            return "book";
+        }
+
+        return "book";
+    }
+
+    public String deleteBook(@Valid BookDto bookDto,
+                             BindingResult result,
+                             Model model) {
+        if (result.hasErrors()) {
+            return "book";
+        }
+
+        return "book";
+    }
+
+    public String buyBook(@Valid BookDto bookDto,
+                          BindingResult result,
+                          Model model) {
+        return "book";
     }
 }
