@@ -20,14 +20,14 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/}">Home</a>
+          <a class="nav-link" th:href="@{/}" id="home-button">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/book}">Book</a>
+          <a class="nav-link" th:href="@{/book}" id="book-button">Book</a>
         </li>
         <div sec:authorize="hasRole('ROLE_ADMIN')">
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/book/add}"  id="addBook-button" >Add Book</a>
+            <a class="nav-link" th:href="@{/book/add}" id="addBook-button">Add Book</a>
           </li>
         </div>
       </ul>
@@ -36,15 +36,15 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="btn-group">
           <a class="btn btn-outline-button" href="#">สวัสดี <b><span sec:authentication="name"></span></b></a>
-          <a class="btn btn-outline-button" th:href="@{/logout}">ออกจากระบบ</a>
+          <a class="btn btn-outline-button" th:href="@{/logout}" id="logout-button">ออกจากระบบ</a>
         </li>
       </ul>
     </div>
     <div sec:authorize="isAnonymous()">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="btn-group">
-          <a class="btn btn-outline-button" th:href="@{/login}">เข้าสู่ระบบ</a>
-          <a class="btn btn-outline-button" th:href="@{/signup}">ลงทะเบียนผู้ใช้</a>
+          <a class="btn btn-outline-button" th:href="@{/login}" id="login-button">เข้าสู่ระบบ</a>
+          <a class="btn btn-outline-button" th:href="@{/signup}" id="signup-button">ลงทะเบียนผู้ใช้</a>
         </li>
       </ul>
     </div>

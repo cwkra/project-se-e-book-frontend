@@ -52,4 +52,36 @@ public class BookService {
 
         return response.getBody();
     }
+
+    public BookDto updateBook(BookDto book) {
+        String token = tokenService.requestAccessToken();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("authorization", "Bearer " + token);
+        headers.add("Content-Type", MediaType.APPLICATION_JSON.toString());
+        HttpEntity entity = new HttpEntity(book,headers);
+
+        String url = "http://localhost:8090/book";
+
+        ResponseEntity<BookDto> response =
+                restTemplate.exchange(url, HttpMethod.PUT, entity, BookDto.class);
+
+        return response.getBody();
+    }
+
+    public BookDto deleteBook(BookDto book) {
+        String token = tokenService.requestAccessToken();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("authorization", "Bearer " + token);
+        headers.add("Content-Type", MediaType.APPLICATION_JSON.toString());
+        HttpEntity entity = new HttpEntity(book,headers);
+
+        String url = "http://localhost:8090/book";
+
+        ResponseEntity<BookDto> response =
+                restTemplate.exchange(url, HttpMethod.DELETE, entity, BookDto.class);
+
+        return response.getBody();
+    }
 }

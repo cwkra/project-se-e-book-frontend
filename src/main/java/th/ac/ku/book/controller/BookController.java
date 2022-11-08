@@ -5,10 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import th.ac.ku.book.dto.BookDto;
 import th.ac.ku.book.service.BookService;
 
@@ -44,7 +41,9 @@ public class BookController {
         return "redirect:/book";
     }
 
-    public String updateBook(@Valid BookDto bookDto,
+    @PostMapping("/{id}")
+    public String updateBook(@PathVariable("id") Integer id,
+                             @Valid BookDto bookDto,
                              BindingResult result,
                              Model model) {
         if (result.hasErrors()) {
@@ -54,6 +53,7 @@ public class BookController {
         return "book";
     }
 
+    @PostMapping
     public String deleteBook(@Valid BookDto bookDto,
                              BindingResult result,
                              Model model) {

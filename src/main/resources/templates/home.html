@@ -19,8 +19,8 @@
     <p>Hello, Khun <b><span sec:authentication="name"></span></b></p>
   </div>
   <div sec:authorize="isAnonymous()">
-    <a class="btn btn-button" th:href="@{/login}">Login</a>
-    <a class="btn btn-outline-button" th:href="@{/signup}">Sign Up</a>
+    <a class="btn btn-button" th:href="@{/login}" id="login-button">Login</a>
+    <a class="btn btn-outline-button" th:href="@{/signup}" id="signup-button">Sign Up</a>
   </div>
   <table class="table table-striped">
     <thead>
@@ -38,8 +38,26 @@
       <td th:text="${#numbers.formatDecimal(book.price, 0, 'COMMA', 2, 'POINT')}"></td>
       <td th:text="${book.category}"></td>
       <td th:text="${book.author}"></td>
-      <td style="text-align:center;">
-        <button class="btn btn-details">Details</button>
+      <td style="text-align:center">
+        <button class="btn btn-outline-button" data-toggle="modal" data-target="#buyModal" th:data-row="${book}" id="details-button">Details</button>
+        <div class="modal" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-cancel" data-dismiss="modal" id="cancel-button">Cancel</button>
+                <button type="button" class="btn btn-submit" id="buy-button">Buy</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </td>
     </tr>
     </tbody>

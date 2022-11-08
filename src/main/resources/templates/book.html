@@ -17,6 +17,7 @@
   <table class="table table-striped">
     <thead>
     <tr>
+      <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Price</th>
       <th scope="col">Category</th>
@@ -27,15 +28,16 @@
     </thead>
     <tbody>
     <tr th:each="book : ${books}">
+      <td th:text="${book.id}"></td>
       <td th:text="${book.name}"></td>
       <td th:text="${#numbers.formatDecimal(book.price, 0, 'COMMA', 2, 'POINT')}"></td>
       <td th:text="${book.category}"></td>
       <td th:text="${book.author}"></td>
-      <td style="text-align:center;">
-        <button class="btn btn-edit">Edit</button>
+      <td style="text-align:center">
+        <button class="btn btn-edit" id="edit-button">Edit</button>
       </td>
-      <td style="text-align:center;">
-        <button class="btn btn-delete">Delete</button>
+      <td style="text-align:center">
+        <button class="btn btn-delete" id="delete-button">Delete</button>
       </td>
     </tr>
     </tbody>
