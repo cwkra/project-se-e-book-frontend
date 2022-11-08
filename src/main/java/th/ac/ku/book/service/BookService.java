@@ -65,7 +65,7 @@ public class BookService {
 
         ResponseEntity<BookDto> response =
                 restTemplate.exchange(url, HttpMethod.PUT, entity, BookDto.class);
-
+        System.out.println(response.getBody().toString());
         return response.getBody();
     }
 
@@ -77,7 +77,7 @@ public class BookService {
         headers.add("Content-Type", MediaType.APPLICATION_JSON.toString());
         HttpEntity entity = new HttpEntity(book,headers);
 
-        String url = "http://localhost:8090/book";
+        String url = "http://localhost:8090/book/" + book.getId();
 
         ResponseEntity<BookDto> response =
                 restTemplate.exchange(url, HttpMethod.DELETE, entity, BookDto.class);

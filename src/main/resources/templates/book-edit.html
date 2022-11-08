@@ -12,20 +12,20 @@
 <div th:insert="fragments/header :: header"></div>
 
 <div class="container w-50 p-3">
-  <h1 class="display-5">Add Book</h1>
+  <h1 class="display-5">Edit Book</h1>
 
-  <form action="#" th:action="@{/book/edit/{id}}" th:object="${bookDto}" method="POST">
+  <form action="#" th:action="@{/book/edit}" th:object="${bookDto}" method="POST">
     <div class="row g-3">
       <div class="col">
         <label for="inputName">Name</label>
-        <input id="inputName" type="text" class="form-control"
+        <input id="inputName" type="text" class="form-control" th:value="${name}"
                th:field="*{name}" >
         <div class="alert alert-warning" th:if="${#fields.hasErrors('name')}"
              th:errors="*{name}"></div>
       </div>
       <div class="col">
         <label for="inputPrice">Price</label>
-        <input id="inputPrice" type="text" class="form-control"
+        <input id="inputPrice" type="text" class="form-control" th:value="${price}"
                th:field="*{price}">
         <div class="alert alert-warning" th:if="${#fields.hasErrors('price')}"
              th:errors="*{price}"></div>
@@ -50,12 +50,13 @@
     </div>
     <div class="mb-3">
       <label for="inputAuthor">Author</label>
-      <input id="inputAuthor" type="text" class="form-control"
+      <input id="inputAuthor" type="text" class="form-control" th:value="${author}"
              th:field="*{author}" >
       <div class="alert alert-warning" th:if="${#fields.hasErrors('author')}"
            th:errors="*{author}"></div>
     </div>
     <button id="submit-button" type="submit" class="btn btn-submit">Submit</button>
+    <a class="btn btn-cancel" id="cancel-button" th:href="@{/}">Cancel</a>
   </form>
 </div>
 

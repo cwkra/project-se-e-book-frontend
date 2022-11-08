@@ -15,8 +15,7 @@
 <div class="container w-50 p-3">
   <h1 class="display-5">Sign Up</h1>
 
-  <form action="#" th:action="@{/signup}" th:object="${signupDto}"
-        method="POST">
+  <form action="#" th:action="@{/signup}" th:object="${signupDto}" method="POST">
 
     <div id="success-msg" class="alert alert-success" th:if="${signupSuccess}">
       Successfully signed up! Please <a th:href="@{/login}">login</a>.

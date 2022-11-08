@@ -38,22 +38,45 @@
       <td th:text="${#numbers.formatDecimal(book.price, 0, 'COMMA', 2, 'POINT')}"></td>
       <td th:text="${book.category}"></td>
       <td th:text="${book.author}"></td>
-      <td style="text-align:center">
-        <button class="btn btn-outline-button" data-toggle="modal" data-target="#buyModal" th:data-row="${book}" id="details-button">Details</button>
-        <div class="modal" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
+      <td>
+        <button type="button" class="btn btn-outline-button" data-bs-toggle="modal" th:attr="data-bs-target='#index'+${book.id}">
+          Details
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" th:id="'index' + ${book.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Details</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
+                <h1 class="modal-title fs-5" id="exampleModalLabel1">Details</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-cancel" data-dismiss="modal" id="cancel-button">Cancel</button>
-                <button type="button" class="btn btn-submit" id="buy-button">Buy</button>
+                <form th:action="@{/book}" th:object="${book}" method="POST">
+                  <div class="row g-3">
+                    <div class="col">
+                      <label for="inputId1"></label>
+                      <input name="id" id="inputId1" type="text" class="form-control" th:value="${book.id}" hidden>
+                      <label for="inputName1">Name</label>
+                      <input name="name" id="inputName1" type="text" class="form-control" th:value="${book.name}" disabled>
+                    </div>
+                    <div class="col">
+                      <label for="inputPrice1">Price</label>
+                      <input name="price" id="inputPrice1" type="text" class="form-control" th:value="${book.price}" disabled>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="inputCategory1">Category</label>
+                    <input name="category" id="inputCategory1" class="form-control" th:value="${book.category}" disabled>
+                  </div>
+                  <div class="mb-3">
+                    <label for="inputAuthor1">Author</label>
+                    <input name="author" id="inputAuthor1" type="text" class="form-control" th:value="${book.author}" disabled>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Cancel</button>
+                    <button th:href="@{/book}" type="submit" class="btn btn-submit">Buy</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
