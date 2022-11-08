@@ -27,7 +27,7 @@
         </li>
         <div sec:authorize="hasRole('ROLE_ADMIN')">
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/book/add}">Add Book</a>
+            <a class="nav-link" th:href="@{/book/add}"  id="addBook-button" >Add Book</a>
           </li>
         </div>
       </ul>
