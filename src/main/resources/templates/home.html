@@ -28,6 +28,9 @@
     <a class="btn btn-button" th:href="@{/login}" id="login-button">Login</a>
     <a class="btn btn-outline-button" th:href="@{/signup}" id="signup-button">Sign Up</a>
   </div>
+  <div id="success-msg" class="alert alert-success" th:if="${buySuccess}">
+    Your purchase has been confirmed!, Please check your email. Thank you for shopping with us.
+  </div>
   <div class="mb-3">
   <table class="table table-striped">
     <thead>
@@ -58,7 +61,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form th:action="@{/book}" th:object="${book}" method="POST">
+                <form th:action="@{/buy}" th:object="${book}" method="POST">
                   <div class="row g-3">
                     <div class="col">
                       <label for="inputId1"></label>
@@ -81,7 +84,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Cancel</button>
-                    <button th:href="@{/book}" type="submit" class="btn btn-submit">Buy</button>
+                    <button th:href="@{/buy}" type="submit" class="btn btn-submit">Buy</button>
                   </div>
                 </form>
               </div>

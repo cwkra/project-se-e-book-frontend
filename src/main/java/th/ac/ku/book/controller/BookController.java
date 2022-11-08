@@ -83,11 +83,4 @@ public class BookController {
 
         return "redirect:/book";
     }
-
-    @PostMapping
-    public String buyBook(@Valid BookDto bookDto,
-                          BindingResult result,
-                          Model model) {
-        return "redirect:/";
-    }
 }
